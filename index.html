@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+ <head>
+    <title>Reynolds Experiment</title>
+	<meta charset="UTF-8">
+    <meta name="description" content="This page has a simulation for reynolds experiment">
+    <meta name="keywords" content="Reynolds,Experiment,Laminar,Transitional,Turbulent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../Libraries/canvasjs.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+	<div class="outline">
+		<canvas></canvas>
+		<div class="overlay">
+			<ul style="color:#006599">
+				<li><a onclick="heading(this)" name="Laminar">Laminar</a></li>
+				<li><a onclick="heading(this)" name="Transitional">Transitional</a></li>
+				<li><a onclick="heading(this)" name="Turbulent">Turbulent</a></li>
+			</ul>
+		</div>
+		<div class="button">
+			<button id="b" onclick="main()" >Start</button>
+		</div>
+		<div >
+			<u id="heading" style="color:#006599">Laminar</u>
+		</div>
+	</div>
+	<script src="script.js">
+	</script>
+  </body>
+ </html>
