@@ -140,25 +140,42 @@
 				var h=document.getElementById("heading");
 				h.innerHTML=x;
 				selection=x;
+				cancelAnimationFrame(line_id);
+				cancelAnimationFrame(id);
+				x=900;
+				var btn=document.getElementById("b");
+				btn.disabled=false;
+				c.clearRect(380,200,650,400);
+				draw_main();
+				x_counter=920;
+				flag=10;
+				x_left_water=392;
+				y_left_water=291;
+				x_right_water=536;
+				x_line=599;
+				y_line=387;
+				end=0;
+				id=null;
+				line_id=null;
 				
 			}
 	function main()
 	{
 		
 		if(selection=="Transitional")
-		{   
+		{       x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=true;
 			Transitional_disappear();
 		}	
 		else if(selection=="Turbulent")
-		{   
+		{       x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=true;
 			Turbulent_disappear();
 		}
 		else
-		{
+		{       x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=true;
 			Laminar_disappear();
