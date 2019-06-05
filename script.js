@@ -428,11 +428,12 @@
 		{
 			c.beginPath();
 		c.strokeStyle="red";
-		c.lineWidth="2";
+		c.lineWidth="2.2";
 		c.moveTo(x_line,y_line);
 		c.lineTo(x_line+2,y_line);
 		c.stroke();
 		c.closePath();
+			x_line+=2.2;
 		}
 		else if(x_line<982)
 		{
@@ -440,7 +441,7 @@
 			s=s*-1;
 			c.beginPath();
 			c.strokeStyle="red";
-			c.lineWidth="2";
+			c.lineWidth="3.7";
 			if(y_line+y_random>365 && y_line+y_random<400)
 			{
 			c.moveTo(x_line-1,y_line);
@@ -448,11 +449,12 @@
 			c.stroke();
 			c.closePath();
 			y_line=y_line+y_random;
+				x_line+=3.7;
 			}
 			
 		}
-		if(x_line<982)
-			x_line+=2.1;
+		
+			
 		else
 		{   
 			cancelAnimationFrame(line_id);
@@ -570,11 +572,11 @@
 		line_id=requestAnimationFrame(Turbulent_line);
 		if(x_line<982)
 		{
-			var y_random=Math.random()*s*10;
+			var y_random=Math.random()*s*7;
 			s=s*-1;
 			c.beginPath();
 			c.strokeStyle="red";
-			c.lineWidth="2";
+			c.lineWidth="3.5";
 			if(y_line+y_random>365 && y_line+y_random<400)
 			{
 			c.moveTo(x_line,y_line);
@@ -586,7 +588,7 @@
 			
 		}
 		if(x_line<982)
-			x_line+=2.2;
+			x_line+=3.5;
 		else
 		{   
 			cancelAnimationFrame(line_id);
