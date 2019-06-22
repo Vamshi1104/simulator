@@ -271,8 +271,7 @@
 				c.closePath();
 				xCounter+=20;
 				flag=10;
-		}
-		    
+		}    
 		if(x<974)
 		{
 			x=x+0.3;
@@ -590,7 +589,6 @@
 	function turbulentDisappear()
 	{
 		disappear();
-		turbulentAnimate();
 		turbulentAnimate();
 		turbulentLine();
 	}
