@@ -1,24 +1,25 @@
-	var canvas = document.querySelector('canvas');
-	var c = canvas.getContext('2d');
+	var canvas = document.querySelector("canvas");
+	var c = canvas.getContext("2d");
 	var selection;
 	var x=900;
-	var x_counter=920;
+	var xCounter=920;
 	var flag=10;
-	var x_left_water=392;
-	var y_left_water=291;
-	var x_right_water=536;
-	var x_line=599;
-	var y_line=387;
+	var xLeftWater=392;
+	var yLeftWater=291;
+	var xRightWater=536;
+	var xLine=599;
+	var yLine=387;
 	var end=0;
 	var id=null;
-	var line_id=null;
+	var lineId=null;
+	var i,j;
 	canvas.width = window.innerWidth; //Setting the canvas to full width of the window
 	canvas.height = window.innerHeight; //Setting the canvas to full height of the window
 	
 	
 	//-----------Drawing outline boxes-------------------
 
-	function draw_main()
+	function drawMain()
 	{
 		c.beginPath();
 		c.lineWidth="10";
@@ -84,14 +85,14 @@
 					k=0;
 					for(i=0;408+k<926;i++)
 						{    
-						  c.beginPath();
-						  c.strokeStyle="white";
-						  c.lineWidth="2";
-						  c.moveTo(398+k,373+m);
-						  c.lineTo(408+k,373+m);
-						  c.stroke();
-						  c.closePath();
-						  k=k+20;
+							c.beginPath();
+							c.strokeStyle="white";
+							c.lineWidth="2";
+							c.moveTo(398+k,373+m);
+							c.lineTo(408+k,373+m);
+							c.stroke();
+							c.closePath();
+							k=k+20;
   
 						}
 					m=m+15;
@@ -133,59 +134,32 @@
 	c.fillStyle="#0099FF";
 	m=0;
 }
-	draw_main();
+	drawMain();
 	function heading(pid)  //function for replacing the heading as per user selection
 			{
 				var x=pid.name;
 				var h=document.getElementById("heading");
 				h.innerHTML=x;
 				selection=x;
-				cancelAnimationFrame(line_id);
+				cancelAnimationFrame(lineId);
 				cancelAnimationFrame(id);
 				x=900;
 				var btn=document.getElementById("b");
 				btn.disabled=false;
 				c.clearRect(380,200,650,400);
-				draw_main();
-				x_counter=920;
+				drawMain();
+				xCounter=920;
 				flag=10;
-				x_left_water=392;
-				y_left_water=291;
-				x_right_water=536;
-				x_line=599;
-				y_line=387;
+				xLeftWater=392;
+				yLeftWater=291;
+				xRightWater=536;
+				xLine=599;
+				yLine=387;
 				end=0;
 				id=null;
-				line_id=null;
+				lineId=null;
 				
 			}
-	function main()
-	{
-		
-		if(selection=="Transitional")
-		{   
-			x=900;
-			var btn=document.getElementById("b");
-			btn.disabled=true;
-			Transitional_disappear();
-		}	
-		else if(selection=="Turbulent")
-		{   
-			x=900;
-			var btn=document.getElementById("b");
-			btn.disabled=true;
-			Turbulent_disappear();
-		}
-		else
-		{
-			x=900;
-			var btn=document.getElementById("b");
-			btn.disabled=true;
-			Laminar_disappear();
-		}
-	}
-	
-	
 	function disappear()
 	{
 		c.beginPath();
@@ -230,54 +204,56 @@
 		c.closePath();
 	}
 	//----Code for Laminar Animation-----
-	function Laminar_disappear()
+	function laminarDisappear()
 	{
         
 		disappear();
-		Laminar_animate();
-		Laminar_line();
+		laminarAnimate();
+		laminarLine();
 	}
-	function Laminar_line()
+	function laminarLine()
 	{
-		line_id=requestAnimationFrame(Laminar_line);
+		lineId=requestAnimationFrame(laminarLine);
 		c.beginPath();
 		c.strokeStyle="red";
 		c.lineWidth="2";
-		c.moveTo(x_line,y_line);
-		c.lineTo(x_line+2,y_line);
+		c.moveTo(xLine,yLine);
+		c.lineTo(xLine+2,yLine);
 		c.stroke();
 		c.closePath();
-		if(x_line<982)
-			x_line+=2.1;
+		if(xLine<982)
+			xLine+=2.1;
 		else
 		{   
-            cancelAnimationFrame(line_id);
+            cancelAnimationFrame(lineId);
 			x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=false;
 			c.clearRect(380,200,650,400);
-			draw_main();
-			x_counter=920;
+			drawMain();
+			xCounter=920;
 			flag=10;
-			x_left_water=392;
-			y_left_water=291;
-			x_right_water=536;
-			x_line=599;
-			y_line=387;
+			xLeftWater=392;
+			yLeftWater=291;
+			xRightWater=536;
+			xLine=599;
+			yLine=387;
 			end=0;
 			id=null;
-			line_id=null;
+			lineId=null;
 		}
 
 
 	}
-	function Laminar_animate()
+	function laminarAnimate()
 	{ 	
-		id=requestAnimationFrame(Laminar_animate);
-		c.clearRect(x_left_water,y_left_water,72,2);
-		c.clearRect(x_right_water,y_left_water,82.2,2);
-		if(y_left_water<321)
-			y_left_water+=0.17;
+		id=requestAnimationFrame(laminarAnimate);
+		c.clearRect(xLeftWater,yLeftWater,72,2);
+		c.clearRect(xRightWater,yLeftWater,82.2,2);
+		if(yLeftWater<321)
+		{
+			yLeftWater+=0.17;
+		}
 	
 		c.fillRect(x,360,11,44);
 		c.stroke();
@@ -286,18 +262,18 @@
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,373);
-				c.lineTo(x_counter+10,373);
+				c.moveTo(xCounter,373);
+				c.lineTo(xCounter+10,373);
 				c.stroke();
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,388);
-				c.lineTo(x_counter+10,388);
+				c.moveTo(xCounter,388);
+				c.lineTo(xCounter+10,388);
 				c.stroke();
 				c.closePath();
 				c.closePath();
-				x_counter+=20;
+				xCounter+=20;
 				flag=10;
 		}
 		    
@@ -314,15 +290,15 @@
 		        c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,373);
-				c.lineTo(x_counter+10,373);
+				c.moveTo(xCounter,373);
+				c.lineTo(xCounter+10,373);
 				c.stroke();
 				c.closePath();
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,388);
-				c.lineTo(x_counter+10,388);
+				c.moveTo(xCounter,388);
+				c.lineTo(xCounter+10,388);
 				c.stroke();
 				c.closePath();
 		if(end)
@@ -333,20 +309,20 @@
 		
 	}
 	//----Code for Transitional Animation-----
-	function Transitional_disappear()
+	function transitionalDisappear()
 	{
 		
 		disappear();
-		Transitional_animate();
-		Transitional_line();
+		transitionalAnimate();
+		transitionalLine();
 	}
-	function Transitional_animate()
+	function transitionalAnimate()
 	{
 		
-		id=requestAnimationFrame(Transitional_animate);
-		c.clearRect(x_left_water,y_left_water,227,2);
-		if(y_left_water<335)
-			y_left_water+=0.33;
+		id=requestAnimationFrame(transitionalAnimate);
+		c.clearRect(xLeftWater,yLeftWater,227,2);
+		if(yLeftWater<335)
+			yLeftWater+=0.33;
 		c.beginPath();
 		c.strokeStyle="black";
 		c.lineWidth="1";
@@ -375,18 +351,18 @@
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,373);
-				c.lineTo(x_counter+10,373);
+				c.moveTo(xCounter,373);
+				c.lineTo(xCounter+10,373);
 				c.stroke();
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,388);
-				c.lineTo(x_counter+10,388);
+				c.moveTo(xCounter,388);
+				c.lineTo(xCounter+10,388);
 				c.stroke();
 				c.closePath();
 				c.closePath();
-				x_counter+=20;
+				xCounter+=20;
 				flag=10;
 		}
 		    
@@ -404,15 +380,15 @@
 		        c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,373);
-				c.lineTo(x_counter+10,373);
+				c.moveTo(xCounter,373);
+				c.lineTo(xCounter+10,373);
 				c.stroke();
 				c.closePath();
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,388);
-				c.lineTo(x_counter+10,388);
+				c.moveTo(xCounter,388);
+				c.lineTo(xCounter+10,388);
 				c.stroke();
 				c.closePath();
 				
@@ -424,35 +400,35 @@
 		
 	}
 	var s=1;
-	function Transitional_line()
+	function transitionalLine()
 	{
-		line_id=requestAnimationFrame(Transitional_line);
-		if(x_line<790)
+		lineId=requestAnimationFrame(transitionalLine);
+		if(xLine<790)
 		{
 			c.beginPath();
 		c.strokeStyle="red";
 		c.lineWidth="2.2";
-		c.moveTo(x_line,y_line);
-		c.lineTo(x_line+2,y_line);
+		c.moveTo(xLine,yLine);
+		c.lineTo(xLine+2,yLine);
 		c.stroke();
 		c.closePath();
-		x_line+=2.2;
+		xLine+=2.2;
 		}
-		else if(x_line<982)
+		else if(xLine<982)
 		{
-			var y_random=Math.random()*s*4;
+			var yRandom=Math.random()*s*4;
 			s=s*-1;
 			c.beginPath();
 			c.strokeStyle="red";
 			c.lineWidth="3.7";
-			if(y_line+y_random>365 && y_line+y_random<400)
+			if(yLine+yRandom>365 && yLine+yRandom<400)
 			{
-			c.moveTo(x_line-1,y_line);
-			c.lineTo(x_line-1,y_line+y_random);
+			c.moveTo(xLine-1,yLine);
+			c.lineTo(xLine-1,yLine+yRandom);
 			c.stroke();
 			c.closePath();
-			y_line=y_line+y_random;
-			x_line+=3.7;
+			yLine=yLine+yRandom;
+			xLine+=3.7;
 			}
 			
 		}
@@ -460,39 +436,39 @@
 			
 		else
 		{   
-			cancelAnimationFrame(line_id);
+			cancelAnimationFrame(lineId);
 			x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=false;
 			c.clearRect(380,200,650,400);
-			draw_main();
-			x_counter=920;
+			drawMain();
+			xCounter=920;
 			flag=10;
-			x_left_water=392;
-			y_left_water=291;
-			x_right_water=536;
-			x_line=599;
-			y_line=387;
+			xLeftWater=392;
+			yLeftWater=291;
+			xRightWater=536;
+			xLine=599;
+			yLine=387;
 			end=0;
 			id=null;
-			line_id=null;
+			lineId=null;
 		}
 
 	}
 	//----Code for Turbulent Animation-----
-	function Turbulent_disappear()
+	function turbulentDisappear()
 	{
 		disappear();
-		Turbulent_animate();
-		Turbulent_line();
+		turbulentAnimate();
+		turbulentLine();
 	}
-	function Turbulent_animate()
+	function turbulentAnimate()
 	{
 		
-		id=requestAnimationFrame(Turbulent_animate);
-		c.clearRect(x_left_water,y_left_water,227,2);
-		if(y_left_water<345)
-			y_left_water+=0.5;
+		id=requestAnimationFrame(turbulentAnimate);
+		c.clearRect(xLeftWater,yLeftWater,227,2);
+		if(yLeftWater<345)
+			yLeftWater+=0.5;
 		c.beginPath();
 		c.strokeStyle="black";
 		c.lineWidth="1";
@@ -521,18 +497,18 @@
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,373);
-				c.lineTo(x_counter+10,373);
+				c.moveTo(xCounter,373);
+				c.lineTo(xCounter+10,373);
 				c.stroke();
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,388);
-				c.lineTo(x_counter+10,388);
+				c.moveTo(xCounter,388);
+				c.lineTo(xCounter+10,388);
 				c.stroke();
 				c.closePath();
 				c.closePath();
-				x_counter+=20;
+				xCounter+=20;
 				flag=10;
 		}
 		    
@@ -550,15 +526,15 @@
 		        c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,373);
-				c.lineTo(x_counter+10,373);
+				c.moveTo(xCounter,373);
+				c.lineTo(xCounter+10,373);
 				c.stroke();
 				c.closePath();
 				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
-				c.moveTo(x_counter,388);
-				c.lineTo(x_counter+10,388);
+				c.moveTo(xCounter,388);
+				c.lineTo(xCounter+10,388);
 				c.stroke();
 				c.closePath();
 				
@@ -569,58 +545,87 @@
 		}
 		
 	}
-	function Turbulent_line()
+	function turbulentLine()
 	{
 		
-		line_id=requestAnimationFrame(Turbulent_line);
-		if(x_line<982)
+		lineId=requestAnimationFrame(turbulentLine);
+		if(xLine<982)
 		{
-			var y_random=Math.random()*s*7;
+			var yRandom=Math.random()*s*7;
 			s=s*-1;
 			c.beginPath();
 			c.strokeStyle="red";
 			c.lineWidth="3.5";
-			if(y_line+y_random>365 && y_line+y_random<400)
+			if(yLine+yRandom>365 && yLine+yRandom<400)
 			{
-			c.moveTo(x_line,y_line);
-			c.lineTo(x_line,y_line+y_random);
+			c.moveTo(xLine,yLine);
+			c.lineTo(xLine,yLine+yRandom);
 			c.stroke();
 			c.closePath();
-			y_line=y_line+y_random;
+			yLine=yLine+yRandom;
 			}
 			
 		}
-		if(x_line<982)
-			x_line+=3.5;
+		if(xLine<982)
+			xLine+=3.5;
 		else
 		{   
-			cancelAnimationFrame(line_id);
+			cancelAnimationFrame(lineId);
 			x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=false;
 			c.clearRect(380,200,650,400);
-			draw_main();
-			x_counter=920;
+			drawMain();
+			xCounter=920;
 			flag=10;
-			x_left_water=392;
-			y_left_water=291;
-			x_right_water=536;
-			x_line=599;
-			y_line=387;
+			xLeftWaterater=392;
+			yLeftWater=291;
+			xRightWater=536;
+			xLine=599;
+			yLine=387;
 			end=0;
 			id=null;
-			line_id=null;
+			lineId=null;
+		}
+	}
+	function main()
+	{
+		
+		if(selection=="Transitional")
+		{   
+			x=900;
+			var btn=document.getElementById("b");
+			btn.disabled=true;
+			transitionalDisappear();
+		}	
+		else if(selection=="Turbulent")
+		{   
+			x=900;
+			var btn=document.getElementById("b");
+			btn.disabled=true;
+			turbulentDisappear();
+		}
+		else
+		{
+			x=900;
+			var btn=document.getElementById("b");
+			btn.disabled=true;
+			laminarDisappear();
+			
 		}
 	}
 	
+	
+	
+	
 		var pattern=/\D/g;
 		var len,time,dia,first,last;
-		var char_flag,flag_control;
+		var charFlag,flagControl;
 		//Extracting the inputs from user
-		function get_data()
+		function getData()
 		{
-		char_flag=false;
-		flag_control=false;
+		charFlag=false;
+		flagControl=false;
 		len=document.getElementById("myRange3").value;
 		var len1=len.match(pattern);
 		
@@ -637,15 +642,15 @@
 		
 		if(len1!=null||time1!=null||dia1!=null||first1!=null||last1!=null)
 		{   
-			char_flag=true;
-			flag_control=true;
+			charFlag=true;
+			flagControl=true;
 			alert("Please enter only digits,that too should be positive!");
 		}
 		if(len<=0||time<=0||dia<=0)
 		{
-			if(!flag_control)
+			if(!flagControl)
 			{
-				char_flag=true;
+				charFlag=true;
 				alert("Plese enter only positive numbers!");
 			}
 		}
@@ -655,11 +660,14 @@
 		
 		//Function to calculate the reynolds number
 		function rno()
-		{   get_data();
-			var num=((len/time)*dia)/0.55;
-			var reynum=document.getElementById("Number");
-			reynum.innerHTML=num;
-			regime(num);
+		{   getData();
+			if(!charFlag)
+			{
+				var num=((len/time)*dia)/0.55;
+				var reynum=document.getElementById("Number");
+				reynum.innerHTML=num;
+				regime(num);
+			}
 		}
 		
 		//Function to determine flow of regime
