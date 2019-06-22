@@ -204,13 +204,6 @@
 		c.closePath();
 	}
 	//----Code for Laminar Animation-----
-	function laminarDisappear()
-	{
-        
-		disappear();
-		laminarAnimate();
-		laminarLine();
-	}
 	function laminarLine()
 	{
 		lineId=requestAnimationFrame(laminarLine);
@@ -308,14 +301,15 @@
 		}
 		
 	}
-	//----Code for Transitional Animation-----
-	function transitionalDisappear()
+	function laminarDisappear()
 	{
-		
+        
 		disappear();
-		transitionalAnimate();
-		transitionalLine();
+		laminarAnimate();
+		laminarLine();
 	}
+	
+	//----Code for Transitional Animation-----
 	function transitionalAnimate()
 	{
 		
@@ -455,13 +449,16 @@
 		}
 
 	}
-	//----Code for Turbulent Animation-----
-	function turbulentDisappear()
+	function transitionalDisappear()
 	{
+		
 		disappear();
-		turbulentAnimate();
-		turbulentLine();
+		transitionalAnimate();
+		transitionalLine();
 	}
+	
+	//----Code for Turbulent Animation-----
+	
 	function turbulentAnimate()
 	{
 		
@@ -567,7 +564,9 @@
 			
 		}
 		if(xLine<982)
+		{
 			xLine+=3.5;
+		}
 		else
 		{   
 			cancelAnimationFrame(lineId);
@@ -578,7 +577,7 @@
 			drawMain();
 			xCounter=920;
 			flag=10;
-			xLeftWaterater=392;
+			xLeftWater=392;
 			yLeftWater=291;
 			xRightWater=536;
 			xLine=599;
@@ -588,6 +587,14 @@
 			lineId=null;
 		}
 	}
+	function turbulentDisappear()
+	{
+		disappear();
+		turbulentAnimate();
+		turbulentAnimate();
+		turbulentLine();
+	}
+	
 	function main()
 	{
 		
@@ -656,20 +663,6 @@
 		}
 		
 		}
-		
-		
-		//Function to calculate the reynolds number
-		function rno()
-		{   getData();
-			if(!charFlag)
-			{
-				var num=((len/time)*dia)/0.55;
-				var reynum=document.getElementById("Number");
-				reynum.innerHTML=num;
-				regime(num);
-			}
-		}
-		
 		//Function to determine flow of regime
 		function regime(reynum)
 		
@@ -689,6 +682,20 @@
 				reg.innerHTML="Turbulent Flow";
 			}
 		}
+		//Function to calculate the reynolds number
+		function rno()
+		{   getData();
+			if(!charFlag)
+			{
+				var num=((len/time)*dia)/0.55;
+				var reynum=document.getElementById("Number");
+				reynum.innerHTML=num;
+				regime(num);
+			}
+		}
+		
+		
+		
 		function reset()
 		{
 			document.getElementById("myRange1").value=null;
