@@ -163,19 +163,22 @@
 	{
 		
 		if(selection=="Transitional")
-		{       x=900;
+		{   
+			x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=true;
 			Transitional_disappear();
 		}	
 		else if(selection=="Turbulent")
-		{       x=900;
+		{   
+			x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=true;
 			Turbulent_disappear();
 		}
 		else
-		{       x=900;
+		{
+			x=900;
 			var btn=document.getElementById("b");
 			btn.disabled=true;
 			Laminar_disappear();
@@ -433,7 +436,7 @@
 		c.lineTo(x_line+2,y_line);
 		c.stroke();
 		c.closePath();
-			x_line+=2.2;
+		x_line+=2.2;
 		}
 		else if(x_line<982)
 		{
@@ -449,7 +452,7 @@
 			c.stroke();
 			c.closePath();
 			y_line=y_line+y_random;
-				x_line+=3.7;
+			x_line+=3.7;
 			}
 			
 		}
@@ -609,6 +612,81 @@
 			line_id=null;
 		}
 	}
+	
+		var pattern=/\D/g;
+		var len,time,dia,first,last;
+		var char_flag,flag_control;
+		//Extracting the inputs from user
+		function get_data()
+		{
+		char_flag=false;
+		flag_control=false;
+		len=document.getElementById("myRange3").value;
+		var len1=len.match(pattern);
 		
-  
-  		
+		time=document.getElementById("myRange4").value;
+		var time1=time.match(pattern);
+		
+		dia=document.getElementById("myRange2").value;
+		var dia1=dia.match(pattern);
+			first=document.getElementById("myRange1").value;
+		var first1=first.match(pattern);
+			last=document.getElementById("myRange5").value;
+		var last1=last.match(pattern);
+		
+		
+		if(len1!=null||time1!=null||dia1!=null||first1!=null||last1!=null)
+		{   
+			char_flag=true;
+			flag_control=true;
+			alert("Please enter only digits,that too should be positive!");
+		}
+		if(len<=0||time<=0||dia<=0)
+		{
+			if(!flag_control)
+			{
+				char_flag=true;
+				alert("Plese enter only positive numbers!");
+			}
+		}
+		
+		}
+		
+		
+		//Function to calculate the reynolds number
+		function rno()
+		{   get_data();
+			var num=((len/time)*dia)/0.55;
+			var reynum=document.getElementById("Number");
+			reynum.innerHTML=num;
+			regime(num);
+		}
+		
+		//Function to determine flow of regime
+		function regime(reynum)
+		
+		{   
+
+			var reg=document.getElementById("flow");
+			if(reynum<2000)
+			{   
+				reg.innerHTML="Laminar Flow";
+			}
+			else if(reynum>2000 && reynum<4000)
+			{
+				reg.innerHTML="Transitional Flow";
+			}
+			else
+			{
+				reg.innerHTML="Turbulent Flow";
+			}
+		}
+		function reset()
+		{
+			document.getElementById("myRange1").value=null;
+			document.getElementById("myRange2").value=null;
+			document.getElementById("myRange3").value=null;
+			document.getElementById("myRange4").value=null;
+			document.getElementById("myRange5").value=null;
+		}
+		
