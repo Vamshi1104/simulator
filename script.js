@@ -13,6 +13,7 @@
 	var id=null;
 	var lineId=null;
 	var i,j;
+	var btn;
 	canvas.width = window.innerWidth; //Setting the canvas to full width of the window
 	canvas.height = window.innerHeight; //Setting the canvas to full height of the window
 	
@@ -76,7 +77,7 @@
 					c.closePath();
 					k=k+20;
 					  
-				  }
+				}
 				m=m+15;
 			}
 			m=0;
@@ -144,7 +145,7 @@
 				cancelAnimationFrame(lineId);
 				cancelAnimationFrame(id);
 				x=900;
-				var btn=document.getElementById("b");
+				btn=document.getElementById("b");
 				btn.disabled=false;
 				c.clearRect(380,200,650,400);
 				drawMain();
@@ -215,12 +216,14 @@
 		c.stroke();
 		c.closePath();
 		if(xLine<982)
+		{
 			xLine+=2.1;
+		}
 		else
 		{   
             cancelAnimationFrame(lineId);
 			x=900;
-			var btn=document.getElementById("b");
+			btn=document.getElementById("b");
 			btn.disabled=false;
 			c.clearRect(380,200,650,400);
 			drawMain();
@@ -316,7 +319,9 @@
 		id=requestAnimationFrame(transitionalAnimate);
 		c.clearRect(xLeftWater,yLeftWater,227,2);
 		if(yLeftWater<335)
+		{
 			yLeftWater+=0.33;
+		}
 		c.beginPath();
 		c.strokeStyle="black";
 		c.lineWidth="1";
@@ -432,7 +437,7 @@
 		{   
 			cancelAnimationFrame(lineId);
 			x=900;
-			var btn=document.getElementById("b");
+			btn=document.getElementById("b");
 			btn.disabled=false;
 			c.clearRect(380,200,650,400);
 			drawMain();
@@ -465,7 +470,9 @@
 		id=requestAnimationFrame(turbulentAnimate);
 		c.clearRect(xLeftWater,yLeftWater,227,2);
 		if(yLeftWater<345)
+		{
 			yLeftWater+=0.5;
+		}
 		c.beginPath();
 		c.strokeStyle="black";
 		c.lineWidth="1";
@@ -508,7 +515,6 @@
 				xCounter+=20;
 				flag=10;
 		}
-		    
 		if(x<974)
 		{
 			x=x+0.5;
@@ -517,10 +523,8 @@
 		else
 		{
 			end=1;
-			
 		}
-		
-		        c.beginPath();
+				c.beginPath();
 				c.strokeStyle="white";
 				c.lineWidth="2";
 				c.moveTo(xCounter,373);
@@ -571,7 +575,7 @@
 		{   
 			cancelAnimationFrame(lineId);
 			x=900;
-			var btn=document.getElementById("b");
+			btn=document.getElementById("b");
 			btn.disabled=false;
 			c.clearRect(380,200,650,400);
 			drawMain();
@@ -598,24 +602,24 @@
 	function main()
 	{
 		
-		if(selection=="Transitional")
+		if(selection==="Transitional")
 		{   
 			x=900;
-			var btn=document.getElementById("b");
+			btn=document.getElementById("b");
 			btn.disabled=true;
 			transitionalDisappear();
 		}	
-		else if(selection=="Turbulent")
+		else if(selection==="Turbulent")
 		{   
 			x=900;
-			var btn=document.getElementById("b");
+			btn=document.getElementById("b");
 			btn.disabled=true;
 			turbulentDisappear();
 		}
 		else
 		{
 			x=900;
-			var btn=document.getElementById("b");
+			btn=document.getElementById("b");
 			btn.disabled=true;
 			laminarDisappear();
 			
