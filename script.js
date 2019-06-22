@@ -76,7 +76,6 @@
 					c.stroke();
 					c.closePath();
 					k=k+20;
-					  
 				}
 				m=m+15;
 			}
