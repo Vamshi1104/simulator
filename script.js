@@ -282,21 +282,20 @@
 		{
 			end=1;
 		}
-		
-		        c.beginPath();
-				c.strokeStyle="white";
-				c.lineWidth="2";
-				c.moveTo(xCounter,373);
-				c.lineTo(xCounter+10,373);
-				c.stroke();
-				c.closePath();
-				c.beginPath();
-				c.strokeStyle="white";
-				c.lineWidth="2";
-				c.moveTo(xCounter,388);
-				c.lineTo(xCounter+10,388);
-				c.stroke();
-				c.closePath();
+			c.beginPath();
+			c.strokeStyle="white";
+			c.lineWidth="2";
+			c.moveTo(xCounter,373);
+			c.lineTo(xCounter+10,373);
+			c.stroke();
+			c.closePath();
+			c.beginPath();
+			c.strokeStyle="white";
+			c.lineWidth="2";
+			c.moveTo(xCounter,388);
+			c.lineTo(xCounter+10,388);
+			c.stroke();
+			c.closePath();
 		if(end)
 		{
 			cancelAnimationFrame(id);
