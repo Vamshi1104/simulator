@@ -364,7 +364,6 @@
 				xCounter+=20;
 				flag=10;
 		}
-		    
 		if(x<974)
 		{
 			x=x+0.4;
@@ -373,23 +372,21 @@
 		else
 		{
 			end=1;
-			
 		}
-		
-		        c.beginPath();
-				c.strokeStyle="white";
-				c.lineWidth="2";
-				c.moveTo(xCounter,373);
-				c.lineTo(xCounter+10,373);
-				c.stroke();
-				c.closePath();
-				c.beginPath();
-				c.strokeStyle="white";
-				c.lineWidth="2";
-				c.moveTo(xCounter,388);
-				c.lineTo(xCounter+10,388);
-				c.stroke();
-				c.closePath();
+			c.beginPath();
+			c.strokeStyle="white";
+			c.lineWidth="2";
+			c.moveTo(xCounter,373);
+			c.lineTo(xCounter+10,373);
+			c.stroke();
+			c.closePath();
+			c.beginPath();
+			c.strokeStyle="white";
+			c.lineWidth="2";
+			c.moveTo(xCounter,388);
+			c.lineTo(xCounter+10,388);
+			c.stroke();
+			c.closePath();
 				
 		if(end)
 		{
