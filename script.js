@@ -39,10 +39,10 @@
 			c.stroke();
 			}
 		draw("3","#006599",350,50,350,650);
-		draw("1","#006599",200,105,305,105);
+		draw("1","#006599",535,39,775,39);
 		c.font="25px Arial";
 		c.fillStyle="#006599";
-		c.fillText("Reynolds",200,100);
+		c.fillText("Reynolds Experiment",535,35);
 		c.stroke();
 		draw("3","#767676",390,240,390,450);
 		c.beginPath();
